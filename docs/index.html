@@ -59,13 +59,13 @@
   <body>
     <main>
       <h1>module/asana - V8 module</h1>
-      <p class="intro">Asana automation often starts with simple workflow needs: list the right projects, create a task, and add updates as work progresses. This module bundles those common actions so your workflows stay compact and readable.</p>
+      <p class="intro">Keep Asana work moving with simple, reusable building blocks for everyday automations like listing projects, creating tasks, and posting updates. This module keeps your workflow steps short while still covering the common Asana actions teams reach for.</p>
       <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
       <div class="section">
         <h2>Technical reference</h2>
         <h1>module/asana - V8 module</h1>
-<p>Asana automation often starts with simple workflow needs: list the right projects, create a task, and add updates as work progresses. This module bundles those common actions so your workflows stay compact and readable.</p>
-<p>Use it to connect your automations to Asana in a predictable, well-structured way. Learn more about the platform at https://instago.ai.</p>
+<p>Keep Asana work moving with simple, reusable building blocks for everyday automations like listing projects, creating tasks, and posting updates. This module keeps your workflow steps short while still covering the common Asana actions teams reach for.</p>
+<p>For more on the platform and tooling, visit https://instago.ai.</p>
 <h2>Technical reference</h2>
 <h3>Exports</h3>
 <p><code>{ configure, request, getUser, listWorkspaces, getWorkspace, listUsers, listTeams, getTeam, listProjects, getProject, updateProject, createProject, listProjectMemberships, listTasks, searchTasks, getTask, listSubtasks, createTask, updateTask, addProjectToTask, removeProjectFromTask, addComment, listStories, getStory, addSubtask, listSections, createSection, addTaskToSection, listTags, getTag, createTag, listAttachments, getAttachment, selfTest }</code></p>
@@ -80,7 +80,7 @@ const asana = require(&#x27;asana@latest&#x27;);
 <li><code>asana.baseUrl</code> (optional)</li>
 <li><code>asana.defaultWorkspace</code> (optional)</li>
 </ul>
-<p>You can also call <code>configure({ accessToken, baseUrl, defaultWorkspace })</code> to override defaults.</p>
+<p>You can also call <code>configure({ accessToken, baseUrl, defaultWorkspace })</code> to override defaults. If <code>baseUrl</code> is not set, it defaults to <code>https://app.asana.com/api/1.0</code>.</p>
 <h3>API</h3>
 <ul>
 <li><code>request({ method, pathName, query, data, optFields, debug })</code></li>
@@ -121,7 +121,10 @@ const asana = require(&#x27;asana@latest&#x27;);
 <p>List projects and create a task:</p>
 <pre class="code"><code>
 const asana = require(&#x27;asana@latest&#x27;);
-asana.configure({ accessToken: env.ASANA_TOKEN, defaultWorkspace: env.ASANA_WORKSPACE });
+asana.configure({
+  accessToken: env[&#x27;asana.accessToken&#x27;],
+  defaultWorkspace: env[&#x27;asana.defaultWorkspace&#x27;]
+});
 
 const projects = await asana.listProjects({ optFields: [&#x27;gid&#x27;, &#x27;name&#x27;] });
 if (projects.ok) console.log(&#x27;projects:&#x27;, projects.data);
@@ -150,7 +153,7 @@ if (!comment.ok) console.error(comment.error);
 <p>Search tasks and add to a project section:</p>
 <pre class="code"><code>
 const results = await asana.searchTasks({
-  workspace: env.ASANA_WORKSPACE,
+  workspace: env[&#x27;asana.defaultWorkspace&#x27;],
   text: &#x27;release notes&#x27;,
   optFields: [&#x27;gid&#x27;, &#x27;name&#x27;]
 });
@@ -166,7 +169,7 @@ if (results.ok &amp;&amp; results.data &amp;&amp; results.data.data &amp;&amp; r
 <p>List tags and stories:</p>
 <pre class="code"><code>
 const tags = await asana.listTags({
-  workspace: env.ASANA_WORKSPACE,
+  workspace: env[&#x27;asana.defaultWorkspace&#x27;],
   optFields: [&#x27;gid&#x27;, &#x27;name&#x27;]
 });
 if (!tags.ok) console.error(tags.error);
@@ -178,7 +181,15 @@ const stories = await asana.listStories({
 if (!stories.ok) console.error(stories.error);
 </code></pre>
       </div>
-      
+      <div class="section">
+  <h2>Changelog</h2>
+  <h2>v1.0.1 - Maintenance patch for Asana helper</h2>
+<p>Maintenance patch release for the Asana API helper with updated release notes and metadata keywords.</p>
+<h3>Changed</h3>
+<ul>
+<li>Version bump and changelog entry for the 1.0.1 release.</li>
+</ul>
+</div>
     </main>
   </body>
 </html>

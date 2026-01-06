@@ -1,8 +1,8 @@
 # module/asana - V8 module
 
-Asana automation often starts with simple workflow needs: list the right projects, create a task, and add updates as work progresses. This module bundles those common actions so your workflows stay compact and readable.
+Keep Asana work moving with simple, reusable building blocks for everyday automations like listing projects, creating tasks, and posting updates. This module keeps your workflow steps short while still covering the common Asana actions teams reach for.
 
-Use it to connect your automations to Asana in a predictable, well-structured way. Learn more about the platform at https://instago.ai.
+For more on the platform and tooling, visit https://instago.ai.
 
 ## Technical reference
 
@@ -24,7 +24,7 @@ const asana = require('asana@latest');
 - `asana.baseUrl` (optional)
 - `asana.defaultWorkspace` (optional)
 
-You can also call `configure({ accessToken, baseUrl, defaultWorkspace })` to override defaults.
+You can also call `configure({ accessToken, baseUrl, defaultWorkspace })` to override defaults. If `baseUrl` is not set, it defaults to `https://app.asana.com/api/1.0`.
 
 ### API
 
@@ -68,7 +68,10 @@ List projects and create a task:
 
 ```js
 const asana = require('asana@latest');
-asana.configure({ accessToken: env.ASANA_TOKEN, defaultWorkspace: env.ASANA_WORKSPACE });
+asana.configure({
+  accessToken: env['asana.accessToken'],
+  defaultWorkspace: env['asana.defaultWorkspace']
+});
 
 const projects = await asana.listProjects({ optFields: ['gid', 'name'] });
 if (projects.ok) console.log('projects:', projects.data);
@@ -101,7 +104,7 @@ Search tasks and add to a project section:
 
 ```js
 const results = await asana.searchTasks({
-  workspace: env.ASANA_WORKSPACE,
+  workspace: env['asana.defaultWorkspace'],
   text: 'release notes',
   optFields: ['gid', 'name']
 });
@@ -119,7 +122,7 @@ List tags and stories:
 
 ```js
 const tags = await asana.listTags({
-  workspace: env.ASANA_WORKSPACE,
+  workspace: env['asana.defaultWorkspace'],
   optFields: ['gid', 'name']
 });
 if (!tags.ok) console.error(tags.error);
