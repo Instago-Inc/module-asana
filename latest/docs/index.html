@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>asana Documentation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 48px 24px;
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 28px;
+      }
+      .intro {
+        font-size: 16px;
+        color: #e2e8f0;
+      }
+      p {
+        margin: 0 0 16px;
+        color: #cbd5f5;
+      }
+      ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+      }
+      a {
+        color: #93c5fd;
+      }
+      .section {
+        margin-top: 28px;
+      }
+      .muted {
+        color: #94a3b8;
+        font-size: 14px;
+        margin: 6px 0 0;
+      }
+      .code {
+        background: #0b1220;
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        padding: 16px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>module/asana - V8 module</h1>
+      <p class="intro">Keep Asana work moving with simple, reusable building blocks for everyday automations like listing projects, creating tasks, and posting updates. This module keeps your workflow steps short while still covering the common Asana actions teams reach for.</p>
+      <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
+      <div class="section">
+        <h2>Technical reference</h2>
+        <h1>module/asana - V8 module</h1>
+<p>Keep Asana work moving with simple, reusable building blocks for everyday automations like listing projects, creating tasks, and posting updates. This module keeps your workflow steps short while still covering the common Asana actions teams reach for.</p>
+<p>For more on the platform and tooling, visit https://instago.ai.</p>
+<h2>Technical reference</h2>
+<h3>Exports</h3>
+<p><code>{ configure, request, getUser, listWorkspaces, getWorkspace, listUsers, listTeams, getTeam, listProjects, getProject, updateProject, createProject, listProjectMemberships, listTasks, searchTasks, getTask, listSubtasks, createTask, updateTask, addProjectToTask, removeProjectFromTask, addComment, listStories, getStory, addSubtask, listSections, createSection, addTaskToSection, listTags, getTag, createTag, listAttachments, getAttachment, selfTest }</code></p>
+<h3>Usage</h3>
+<pre class="code"><code>
+const asana = require(&#x27;asana@latest&#x27;);
+</code></pre>
+<h3>Configuration</h3>
+<p><code>env.json</code> keys:</p>
+<ul>
+<li><code>asana.accessToken</code> (optional)</li>
+<li><code>asana.baseUrl</code> (optional)</li>
+<li><code>asana.defaultWorkspace</code> (optional)</li>
+</ul>
+<p>You can also call <code>configure({ accessToken, baseUrl, defaultWorkspace })</code> to override defaults. If <code>baseUrl</code> is not set, it defaults to <code>https://app.asana.com/api/1.0</code>.</p>
+<h3>API</h3>
+<ul>
+<li><code>request({ method, pathName, query, data, optFields, debug })</code></li>
+<li><code>getUser({ userId, optFields, debug })</code></li>
+<li><code>listWorkspaces({ optFields, debug })</code></li>
+<li><code>getWorkspace({ workspaceId, optFields, debug })</code></li>
+<li><code>listUsers({ workspace, team, limit, offset, optFields, debug })</code></li>
+<li><code>listTeams({ organization, workspace, limit, offset, optFields, debug })</code></li>
+<li><code>getTeam({ teamId, optFields, debug })</code></li>
+<li><code>listProjects({ workspace, team, archived, limit, offset, optFields, debug })</code></li>
+<li><code>getProject({ projectId, optFields, debug })</code></li>
+<li><code>updateProject({ projectId, data, optFields, debug })</code></li>
+<li><code>createProject({ workspace, name, team, notes, public, privacy_setting, color, due_on, start_on, current_status, optFields, debug })</code></li>
+<li><code>listProjectMemberships({ projectId, user, limit, offset, optFields, debug })</code></li>
+<li><code>listTasks({ project, assignee, workspace, completed_since, modified_since, section, tag, userTaskList, limit, offset, optFields, debug })</code></li>
+<li><code>searchTasks({ workspace, text, limit, offset, query, optFields, debug })</code></li>
+<li><code>getTask({ taskId, optFields, debug })</code></li>
+<li><code>listSubtasks({ taskId, limit, offset, optFields, debug })</code></li>
+<li><code>createTask({ name, workspace, projects, assignee, due_on, due_at, notes, start_on, start_at, followers, parent, memberships, optFields, debug })</code></li>
+<li><code>updateTask({ taskId, data, optFields, debug })</code></li>
+<li><code>addProjectToTask({ taskId, projectId, sectionId, insert_before, insert_after, optFields, debug })</code></li>
+<li><code>removeProjectFromTask({ taskId, projectId, optFields, debug })</code></li>
+<li><code>addComment({ taskId, text, optFields, debug })</code></li>
+<li><code>listStories({ taskId, limit, offset, optFields, debug })</code></li>
+<li><code>getStory({ storyId, optFields, debug })</code></li>
+<li><code>addSubtask({ taskId, name, notes, assignee, due_on, due_at, start_on, start_at, followers, optFields, debug })</code></li>
+<li><code>listSections({ projectId, optFields, debug })</code></li>
+<li><code>createSection({ projectId, name, insert_before, insert_after, optFields, debug })</code></li>
+<li><code>addTaskToSection({ sectionId, taskId, optFields, debug })</code></li>
+<li><code>listTags({ workspace, limit, offset, optFields, debug })</code></li>
+<li><code>getTag({ tagId, optFields, debug })</code></li>
+<li><code>createTag({ workspace, name, notes, color, optFields, debug })</code></li>
+<li><code>listAttachments({ taskId, limit, offset, optFields, debug })</code></li>
+<li><code>getAttachment({ attachmentId, optFields, debug })</code></li>
+<li><code>selfTest()</code></li>
+</ul>
+<h3>Examples</h3>
+<p>List projects and create a task:</p>
+<pre class="code"><code>
+const asana = require(&#x27;asana@latest&#x27;);
+asana.configure({
+  accessToken: env[&#x27;asana.accessToken&#x27;],
+  defaultWorkspace: env[&#x27;asana.defaultWorkspace&#x27;]
+});
+
+const projects = await asana.listProjects({ optFields: [&#x27;gid&#x27;, &#x27;name&#x27;] });
+if (projects.ok) console.log(&#x27;projects:&#x27;, projects.data);
+
+const task = await asana.createTask({
+  name: &#x27;Draft release notes&#x27;,
+  projects: [env.ASANA_PROJECT_ID],
+  notes: &#x27;First pass of the release notes.&#x27;
+});
+if (!task.ok) console.error(&#x27;createTask failed:&#x27;, task.error);
+</code></pre>
+<p>Update a task and add a comment:</p>
+<pre class="code"><code>
+const update = await asana.updateTask({
+  taskId: env.ASANA_TASK_ID,
+  data: { completed: true }
+});
+if (!update.ok) console.error(update.error);
+
+const comment = await asana.addComment({
+  taskId: env.ASANA_TASK_ID,
+  text: &#x27;Marked complete via automation.&#x27;
+});
+if (!comment.ok) console.error(comment.error);
+</code></pre>
+<p>Search tasks and add to a project section:</p>
+<pre class="code"><code>
+const results = await asana.searchTasks({
+  workspace: env[&#x27;asana.defaultWorkspace&#x27;],
+  text: &#x27;release notes&#x27;,
+  optFields: [&#x27;gid&#x27;, &#x27;name&#x27;]
+});
+if (results.ok &amp;&amp; results.data &amp;&amp; results.data.data &amp;&amp; results.data.data[0]) {
+  const taskId = results.data.data[0].gid;
+  await asana.addProjectToTask({
+    taskId,
+    projectId: env.ASANA_PROJECT_ID,
+    sectionId: env.ASANA_SECTION_ID
+  });
+}
+</code></pre>
+<p>List tags and stories:</p>
+<pre class="code"><code>
+const tags = await asana.listTags({
+  workspace: env[&#x27;asana.defaultWorkspace&#x27;],
+  optFields: [&#x27;gid&#x27;, &#x27;name&#x27;]
+});
+if (!tags.ok) console.error(tags.error);
+
+const stories = await asana.listStories({
+  taskId: env.ASANA_TASK_ID,
+  optFields: [&#x27;gid&#x27;, &#x27;text&#x27;, &#x27;created_at&#x27;]
+});
+if (!stories.ok) console.error(stories.error);
+</code></pre>
+      </div>
+      <div class="section">
+  <h2>Changelog</h2>
+  <h2>v1.0.1 - Maintenance patch for Asana helper</h2>
+<p>Maintenance patch release for the Asana API helper with updated release notes and metadata keywords.</p>
+<h3>Changed</h3>
+<ul>
+<li>Version bump and changelog entry for the 1.0.1 release.</li>
+</ul>
+</div>
+    </main>
+  </body>
+</html>

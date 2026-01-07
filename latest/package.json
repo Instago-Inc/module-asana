@@ -1,0 +1,25 @@
+{
+  "name": "@instago/asana",
+  "version": "1.0.2",
+  "description": "Asana API helper for tasks, projects, teams, tags, and stories",
+  "main": "index.js",
+  "type": "commonjs",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "instago",
+    "asana",
+    "api",
+    "tasks",
+    "projects",
+    "workspaces",
+    "teams",
+    "tags",
+    "stories",
+    "attachments"
+  ],
+  "files": [
+    "index.js",
+    "ReadMe.MD",
+    "LICENSE"
+  ]
+}
