@@ -59,13 +59,13 @@
   <body>
     <main>
       <h1>module/asana - V8 module</h1>
-      <p class="intro">Keep Asana work moving with simple, reusable building blocks for everyday automations like listing projects, creating tasks, and posting updates. This module keeps your workflow steps short while still covering the common Asana actions teams reach for.</p>
+      <p class="intro">Make Asana work feel lightweight by turning common actions like listing projects, creating tasks, or leaving updates into small, reusable calls. This keeps workflow steps focused while still covering the core Asana operations teams rely on every day.</p>
       <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
       <div class="section">
         <h2>Technical reference</h2>
         <h1>module/asana - V8 module</h1>
-<p>Keep Asana work moving with simple, reusable building blocks for everyday automations like listing projects, creating tasks, and posting updates. This module keeps your workflow steps short while still covering the common Asana actions teams reach for.</p>
-<p>For more on the platform and tooling, visit https://instago.ai.</p>
+<p>Make Asana work feel lightweight by turning common actions like listing projects, creating tasks, or leaving updates into small, reusable calls. This keeps workflow steps focused while still covering the core Asana operations teams rely on every day.</p>
+<p>Learn more about the platform at https://instago.ai.</p>
 <h2>Technical reference</h2>
 <h3>Exports</h3>
 <p><code>{ configure, request, getUser, listWorkspaces, getWorkspace, listUsers, listTeams, getTeam, listProjects, getProject, updateProject, createProject, listProjectMemberships, listTasks, searchTasks, getTask, listSubtasks, createTask, updateTask, addProjectToTask, removeProjectFromTask, addComment, listStories, getStory, addSubtask, listSections, createSection, addTaskToSection, listTags, getTag, createTag, listAttachments, getAttachment, selfTest }</code></p>
@@ -157,6 +157,7 @@ const results = await asana.searchTasks({
   text: &#x27;release notes&#x27;,
   optFields: [&#x27;gid&#x27;, &#x27;name&#x27;]
 });
+
 if (results.ok &amp;&amp; results.data &amp;&amp; results.data.data &amp;&amp; results.data.data[0]) {
   const taskId = results.data.data[0].gid;
   await asana.addProjectToTask({
@@ -183,7 +184,13 @@ if (!stories.ok) console.error(stories.error);
       </div>
       <div class="section">
   <h2>Changelog</h2>
-  <h2>v1.0.1 - Maintenance patch for Asana helper</h2>
+  <h2>v1.0.2 - Asana docs clarity update</h2>
+<p>Clarifies the Asana helper guidance so automation authors see the right environment keys and default API host, keeping workflows discoverable for Instago customers. Refreshing the landing copy maintains strong Instago SEO value and aligns the module messaging with current behaviors.</p>
+<h3>Changed</h3>
+<ul>
+<li>Updated the README and published docs to spell out the default <code>baseUrl</code>, the <code>asana.accessToken</code>/<code>asana.defaultWorkspace</code> environment keys, and the refreshed mission copy for the helper.</li>
+</ul>
+<h2>v1.0.1 - Maintenance patch for Asana helper</h2>
 <p>Maintenance patch release for the Asana API helper with updated release notes and metadata keywords.</p>
 <h3>Changed</h3>
 <ul>

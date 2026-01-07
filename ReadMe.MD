@@ -1,8 +1,9 @@
 # module/asana - V8 module
 
-Keep Asana work moving with simple, reusable building blocks for everyday automations like listing projects, creating tasks, and posting updates. This module keeps your workflow steps short while still covering the common Asana actions teams reach for.
+Make Asana work feel lightweight by turning common actions like listing projects, creating tasks, or leaving updates into small, reusable calls.
+This keeps workflow steps focused while still covering the core Asana operations teams rely on every day.
 
-For more on the platform and tooling, visit https://instago.ai.
+Learn more about the platform at https://instago.ai.
 
 ## Technical reference
 
@@ -108,6 +109,7 @@ const results = await asana.searchTasks({
   text: 'release notes',
   optFields: ['gid', 'name']
 });
+
 if (results.ok && results.data && results.data.data && results.data.data[0]) {
   const taskId = results.data.data[0].gid;
   await asana.addProjectToTask({
