@@ -131,7 +131,7 @@ if (projects.ok) console.log(&#x27;projects:&#x27;, projects.data);
 
 const task = await asana.createTask({
   name: &#x27;Draft release notes&#x27;,
-  projects: [env.ASANA_PROJECT_ID],
+  projects: [&#x27;your-project-gid&#x27;],
   notes: &#x27;First pass of the release notes.&#x27;
 });
 if (!task.ok) console.error(&#x27;createTask failed:&#x27;, task.error);
@@ -139,13 +139,13 @@ if (!task.ok) console.error(&#x27;createTask failed:&#x27;, task.error);
 <p>Update a task and add a comment:</p>
 <pre class="code"><code>
 const update = await asana.updateTask({
-  taskId: env.ASANA_TASK_ID,
+  taskId: &#x27;your-task-gid&#x27;,
   data: { completed: true }
 });
 if (!update.ok) console.error(update.error);
 
 const comment = await asana.addComment({
-  taskId: env.ASANA_TASK_ID,
+  taskId: &#x27;your-task-gid&#x27;,
   text: &#x27;Marked complete via automation.&#x27;
 });
 if (!comment.ok) console.error(comment.error);
@@ -162,8 +162,8 @@ if (results.ok &amp;&amp; results.data &amp;&amp; results.data.data &amp;&amp; r
   const taskId = results.data.data[0].gid;
   await asana.addProjectToTask({
     taskId,
-    projectId: env.ASANA_PROJECT_ID,
-    sectionId: env.ASANA_SECTION_ID
+    projectId: &#x27;your-project-gid&#x27;,
+    sectionId: &#x27;your-section-gid&#x27;
   });
 }
 </code></pre>
@@ -176,7 +176,7 @@ const tags = await asana.listTags({
 if (!tags.ok) console.error(tags.error);
 
 const stories = await asana.listStories({
-  taskId: env.ASANA_TASK_ID,
+  taskId: &#x27;your-task-gid&#x27;,
   optFields: [&#x27;gid&#x27;, &#x27;text&#x27;, &#x27;created_at&#x27;]
 });
 if (!stories.ok) console.error(stories.error);
@@ -184,7 +184,13 @@ if (!stories.ok) console.error(stories.error);
       </div>
       <div class="section">
   <h2>Changelog</h2>
-  <h2>v1.0.2 - Asana docs clarity update</h2>
+  <h2>v1.0.3 - Docs refresh for Instago Asana</h2>
+<p>Clarifies the Asana helper guidance so automation authors see the right environment keys and default API host, keeping workflows more discoverable for Instago customers. Freshening the mission copy on README and published docs maintains SEO value while aligning messaging with current behaviors.</p>
+<h3>Changed</h3>
+<ul>
+<li>Updated README and published docs to spell out the default <code>baseUrl</code>, the <code>asana.accessToken</code>/<code>asana.defaultWorkspace</code> environment keys, and the refreshed helper mission copy.</li>
+</ul>
+<h2>v1.0.2 - Asana docs clarity update</h2>
 <p>Clarifies the Asana helper guidance so automation authors see the right environment keys and default API host, keeping workflows discoverable for Instago customers. Refreshing the landing copy maintains strong Instago SEO value and aligns the module messaging with current behaviors.</p>
 <h3>Changed</h3>
 <ul>

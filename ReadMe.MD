@@ -79,7 +79,7 @@ if (projects.ok) console.log('projects:', projects.data);
 
 const task = await asana.createTask({
   name: 'Draft release notes',
-  projects: [env.ASANA_PROJECT_ID],
+  projects: ['your-project-gid'],
   notes: 'First pass of the release notes.'
 });
 if (!task.ok) console.error('createTask failed:', task.error);
@@ -89,13 +89,13 @@ Update a task and add a comment:
 
 ```js
 const update = await asana.updateTask({
-  taskId: env.ASANA_TASK_ID,
+  taskId: 'your-task-gid',
   data: { completed: true }
 });
 if (!update.ok) console.error(update.error);
 
 const comment = await asana.addComment({
-  taskId: env.ASANA_TASK_ID,
+  taskId: 'your-task-gid',
   text: 'Marked complete via automation.'
 });
 if (!comment.ok) console.error(comment.error);
@@ -114,8 +114,8 @@ if (results.ok && results.data && results.data.data && results.data.data[0]) {
   const taskId = results.data.data[0].gid;
   await asana.addProjectToTask({
     taskId,
-    projectId: env.ASANA_PROJECT_ID,
-    sectionId: env.ASANA_SECTION_ID
+    projectId: 'your-project-gid',
+    sectionId: 'your-section-gid'
   });
 }
 ```
@@ -130,7 +130,7 @@ const tags = await asana.listTags({
 if (!tags.ok) console.error(tags.error);
 
 const stories = await asana.listStories({
-  taskId: env.ASANA_TASK_ID,
+  taskId: 'your-task-gid',
   optFields: ['gid', 'text', 'created_at']
 });
 if (!stories.ok) console.error(stories.error);

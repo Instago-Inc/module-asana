@@ -1,10 +1,10 @@
 (function(){
-  const httpx = require('http@1.0.0');
-  const auth = require('auth@1.0.0');
-  const qs = require('qs@1.0.0');
-  const path = require('path@1.0.0');
-  const json = require('json@1.0.0');
-  const log = require('log@1.0.0').create('asana');
+  const httpx = require('http@latest');
+  const auth = require('auth@latest');
+  const qs = require('qs@latest');
+  const path = require('path@latest');
+  const json = require('json@latest');
+  const log = require('log@latest').create('asana');
 
   const cfg = {
     baseUrl: 'https://app.asana.com/api/1.0',

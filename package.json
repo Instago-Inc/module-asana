@@ -1,6 +1,6 @@
 {
   "name": "@instago/asana",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Asana API helper for tasks, projects, teams, tags, and stories",
   "main": "index.js",
   "type": "commonjs",

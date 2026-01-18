@@ -1,3 +1,10 @@
+## v1.0.4 - Dependency and docs polish for Asana helper
+Keeps the Asana helper usage guidance, published docs, and self-test wiring consistent while pointing importer calls at the latest dependency bundles so maintenance stays predictable for automation teams.
+
+### Changed
+- Swapped README and docs snippets to use placeholder GIDs instead of environment variables and aligned the published HTML to match the module guidance.
+- Updated runtime imports (and the self-test harness) to request `latest` versions of the shared helpers so the helper module pulls the newest dependencies without extra metadata churn.
+
 ## v1.0.3 - Docs refresh for Instago Asana
 Clarifies the Asana helper guidance so automation authors see the right environment keys and default API host, keeping workflows more discoverable for Instago customers. Freshening the mission copy on README and published docs maintains SEO value while aligning messaging with current behaviors.
 
